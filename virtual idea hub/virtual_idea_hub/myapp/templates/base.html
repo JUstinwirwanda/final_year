@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Virtual Idea Hub{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        /* Custom Styles */
+        /* Add your custom CSS styles here */
+        .card-post-awareness {
+            background-color: #ffcccb; /* Light Red */
+        }
+
+        .card-post-others {
+            background-color: #add8e6; /* Light Blue */
+        }
+
+        .card-post-reporting {
+            background-color: #90ee90; /* Light Green */
+        }
+
+        .card-post-emergency {
+            background-color: #ffa07a; /* Light Salmon */
+        }
+
+        .card-post-recommendations {
+            background-color: #ffd700; /* Gold */
+        }
+
+        .card-post-innovation {
+            background-color: #d3d3d3; /* Light Gray */
+        }
+
+        .card-post-suggestions {
+            background-color: #ff69b4; /* Hot Pink */
+        }
+
+        .card-post-complain {
+            background-color: #20b2aa; /* Light Sea Green */
+        }
+
+        /* Custom CSS for navbar */
+        .navbar-nav .nav-link {
+            padding: 0.5rem 1rem;
+            font-size: 14px;
+        }
+
+        /* Custom CSS for navbar */
+    .navbar-nav .nav-link {
+        padding: 0.5rem 1rem;
+        font-size: 14px;
+        color: #333; /* Change the color of the menu items */
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #555; /* Change the color of the menu items on hover */
+    }
+
+    .navbar-nav .nav-link.active {
+        color: #777; /* Change the color of the active menu item */
+    }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1 class="logo">
+            <img src="{% static 'img/shoos.jpg' %}" alt="Virtual Logo">
+        </h1>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}"><i class="fas fa-info-circle"></i> About</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'register' %}"><i class="fas fa-user-plus"></i> Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                <li class="nav-item">
+                    <!-- Search Form -->
+                    <form class="form-inline my-2 my-lg-0" action="{% url 'search_results' %}" method="GET">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search..." name="query">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="center-content" style="background-color: #f5f5f5; padding: 20px;">
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div class="container">
+
+    <fieldset>
+        <h2 style="color: #333; text-align: center;">Welcome to Virtual Idea Hub!</h2>
+        <p style="color: #666; text-align: center;">Choose a category to submit your idea:</p></fieldset>
+        <legend><div class="row">
+            <div class="col-md-3 mb-3">
+             <fieldset>
+                <div class="card card-post-awareness">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'post_awareness' %}"><i class="fas fa-bullhorn"></i> Post Awareness</a></h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <div class="card card-post-others">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'post_others' %}"><i class="fas fa-ellipsis-h"></i> Post Others</a></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card card-post-reporting">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'post_reporting' %}"><i class="fas fa-chart-line"></i> Post Reporting</a></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card card-post-emergency">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'post_emergency' %}"><i class="fas fa-exclamation-triangle"></i> Post Emergency</a></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card card-post-recommendations">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'post_recommendations' %}"><i class="fas fa-thumbs-up"></i> Post Recommendations</a></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card card-post-innovation">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'post_innovation' %}"><i class="fas fa-lightbulb"></i> Post Innovation</a></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card card-post-suggestions">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'post_suggestions' %}"><i class="fas fa-comment"></i> Post Suggestions</a></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card card-post-complain">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'post_complain' %}"><i class="fas fa-exclamation-circle"></i> Post Complain</a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <fieldset></legend>
+</main>
+
+<footer>
+    <div class="container">
+        <ul class="footer-links">
+            <li><a href="{% url 'terms_of_service' %}">Terms of Service</a></li>
+            <li><a href="{% url 'privacy_policy' %}">Privacy Policy</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <ul class="social-media">
+            <li><a href="https://www.facebook.com/profile.php?id=100087194013072"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://twitter.com/Justin_w_Rwanda"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.instagram.com/your-instagram-profile"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <p>&copy; 2024 Virtual Idea Hub. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

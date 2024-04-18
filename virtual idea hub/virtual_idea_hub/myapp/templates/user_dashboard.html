@@ -1,0 +1,61 @@
+<!-- user_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ user.username }}!</h1>
+
+    <!-- Display user profile information -->
+    <h2>User Profile</h2>
+    <p>Name: {{ user_profile.get_full_name }}</p>
+    <p>Email: {{ user.email }}</p>
+    <!-- Add other profile fields as needed -->
+
+    <!-- Display submitted reports -->
+    <h2>Submitted Reports</h2>
+    <ul>
+        {% for report in submitted_reports %}
+            <li>
+                Report Name: {{ report.report_name }}<br>
+                Location: {{ report.location }}<br>
+                Report Description: {{ report.report_description }}<br>
+                First Name: {{ report.first_name }}<br>
+                Last Name: {{ report.last_name }}<br>
+                Registration Number: {{ report.registration_number }}<br>
+                Department: {{ report.department }}<br>
+                School: {{ report.school }}<br>
+                Telephone: {{ report.telephone }}<br>
+                Email: {{ report.email }}<br>
+                <!-- Add other fields of the report as needed -->
+            </li>
+        {% empty %}
+            <li>No reports submitted yet.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Option to add new report -->
+    <h2>Add New Report</h2>
+    <form method="post" action="{% url 'post_reporting' %}">
+        {% csrf_token %}
+        <!-- Add form fields for new report submission -->
+        <!-- Example: -->
+        <label for="report_name">Report Name:</label>
+        <input type="text" id="report_name" name="report_name" required><br>
+        <!-- Add other form fields as needed -->
+        <button type="submit">Submit Report</button>
+    </form>
+
+    <!-- Option to update personal information -->
+    <h2>Update Personal Information</h2>
+    <p>You can update your personal information <a href="{% url 'profile_settings_submit' %}">here</a>.</p>
+
+    <!-- Option to delete existing reports -->
+    <h2>Delete Reports</h2>
+    <p>You can delete your submitted reports <a href="#">here</a>.</p>
+    <!-- Add logic to handle report deletion -->
+
+</body>
+</html>
